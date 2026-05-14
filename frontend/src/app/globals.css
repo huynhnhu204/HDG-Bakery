@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+/* ===== Animations cơ bản (tôn trọng prefers-reduced-motion) ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .anim-fade-in { animation: fade-in .5s ease-out both; }
+  @keyframes fade-in {
+    from { opacity: 0 }
+    to   { opacity: 1 }
+  }
+
+  .anim-slide-in-left { animation: slide-in-left .4s ease-out both; }
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-12px) }
+    to   { opacity: 1; transform: translateX(0) }
+  }
+
+  .anim-fade-up { animation: fade-up .45s ease-out both; }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(8px) }
+    to   { opacity: 1; transform: translateY(0) }
+  }
+
+  .anim-pop { animation: pop .25s ease-out both; }
+  @keyframes pop {
+    from { transform: scale(.98); opacity: .85 }
+    to   { transform: scale(1); opacity: 1 }
+  }
+}
+
+/* Micro-interactions */
+.hover-lift {
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-1px);
+}
+
+/* Nút nhấn mượt */
+.btn-soft {
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, transform .12s ease;
+}
+.btn-soft:active {
+  transform: translateY(1px);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .anim-fade-in { animation: fade-in .45s ease-out both }
+  @keyframes fade-in { from { opacity: 0 } to { opacity: 1 } }
+
+  .anim-fade-up { animation: fade-up .45s ease-out both }
+  @keyframes fade-up { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: translateY(0) } }
+
+  .anim-pop { animation: pop .25s ease-out both }
+  @keyframes pop { from { transform: scale(.98); opacity:.85 } to { transform: scale(1); opacity:1 } }
+}
+
+.hover-lift {
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+}
+.hover-lift:hover { transform: translateY(-1px) }
+
+.btn-soft {
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, transform .12s ease;
+}
+.btn-soft:active { transform: translateY(1px) }
+@media (prefers-reduced-motion: no-preference) {
+  .anim-slide-in-left { animation: slide-in-left .35s ease-out both }
+  @keyframes slide-in-left { from { opacity:0; transform: translateX(-12px) } to { opacity:1; transform: translateX(0) } }
+  .anim-slide-in-right { animation: slide-in-right .35s ease-out both }
+  @keyframes slide-in-right { from { opacity:0; transform: translateX(12px) } to { opacity:1; transform: translateX(0) } }
+}
+/* --- Fade in toàn trang --- */
+.anim-fade-in { animation: fade-in .4s ease both; }
+@keyframes fade-in { from {opacity: 0} to {opacity: 1} }
+
+/* --- Item trượt lên nhẹ (stagger) --- */
+.anim-up { animation: up .5s ease both; }
+@keyframes up { from {opacity:0; transform: translateY(10px)} to {opacity:1; transform:none} }
+
+/* --- Card pop khi hover --- */
+.card-pop {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card-pop:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+/* --- Skeleton shimmer --- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #f3f4f6; /* gray-100 */
+}
+.skeleton::after {
+  content: "";
+  position: absolute; inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.6) 50%, rgba(255,255,255,0) 100%);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+/* Slide up animation for coupon notification */
+@keyframes slide-up {
+  from { transform: translateY(100px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}

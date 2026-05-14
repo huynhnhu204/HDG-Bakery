@@ -1,0 +1,13 @@
+# Monorepo root — backend/ và frontend/ có .gitignore riêng
+.DS_Store
+Thumbs.db
+
+# Không có package.json ở root; tránh commit nhầm lock rỗng
+/package-lock.json
+/package-lock-*.json
+/node_modules
+
+# IDE
+.idea/
+*.swp
+*.swo
